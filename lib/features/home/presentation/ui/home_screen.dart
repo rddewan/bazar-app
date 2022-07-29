@@ -36,50 +36,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       appBar: AppBar(
         title: const Text('Home'),
       ),
-      body:  Padding(
-        padding: const EdgeInsets.all(8.0),
+      body:  const Padding(
+        padding:  EdgeInsets.all(8.0),
         child: CustomScrollView(
           slivers: [
 
-            const SliverToBoxAdapter(
-              child: Text(
-                'Brand',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w700
-                ),
-              ),
-            ),
-           
-            Consumer(
-              builder: (context, ref, child) {
-                final  data = ref.watch(brandControllerProvider.select((value) => value.brandList));
-                return SliverToBoxAdapter(
-                  child: SizedBox(
-                    height: 130,
-                    child: ListView.builder(
-                      itemCount: data.length,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder:((context,index) {
-                        final brand = data[index];
-                        
-                        return Card(
-                          child: Column(
-                            children: [
-                              Image.network(brand.thumbnail),
-                              Text(brand.name)
-                            ],
-                          ),
-                        );
-                      }),
-                    ),
-                  ),
-                );
-              },            
-            ),
-
-            const SliverToBoxAdapter(child: SizedBox(height: 16,)),
-            const SliverToBoxAdapter(
+            SliverToBoxAdapter(
               child: Text(
                 'Category',
                 style: TextStyle(
@@ -89,32 +51,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               ),
             ),
 
-            Consumer(
-              builder: (context, ref, child) {
-                final data = ref.watch(categoryControllerProvider.select((value) => value.categoryList));
-                return SliverGrid(
-                  delegate:SliverChildBuilderDelegate((context,index) {
-                    final category = data[index];
-                    
-                    return Card(
-                      child: Column(
-                        children: [
-                          Image.network(category.thumbnail),
-                          Text(category.name)
-                        ],
-                      ),
-                    );
-                  },                
-                  childCount: data.length,),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    mainAxisSpacing: 16,
-                    crossAxisSpacing: 8
-                  ),
-                );
-              },            
-            ),
-
+            CategoryScreen()
+           
+            
           ],
 
         ),
