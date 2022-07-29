@@ -50,8 +50,19 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 ),
               ),
             ),
+            SliverToBoxAdapter(
+              child: ProductScreen(),
+            ),
+            SliverToBoxAdapter(
+              child: CategoryScreen(),
+            ),
+            SliverToBoxAdapter(
+              child: BrandScreen(),
+            ),
 
-            CategoryScreen()
+            
+            
+            
            
             
           ],
