@@ -1,0 +1,1 @@
+const kServerErrorCode = 502;
