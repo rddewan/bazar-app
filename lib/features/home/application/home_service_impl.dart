@@ -46,22 +46,27 @@ class HomeServiceImpl implements HomeService, ProductModelMapper {
 
   @override
   List<ProductModel> mapToDeliveryServiceModel(ProductResponse response) {
-    return response.data.map((e) => 
-      ProductModel(
-        id: e.id, 
-        categoryId: int.parse(e.categoryId), 
-        brandId: int.parse(e.brandId), 
-        sku: e.sku,
-        name: e.name, 
-        shortDescription: e.shortDescription, 
-        longDescription: e.longDescription, 
-        thumbnail: '$_baseUrl${e.thumbnail}', 
-        images: '$_baseUrl${e.images}', 
-        isActive: int.parse(e.isActive), 
-        createdAt: e.createdAt, 
-        updatedAt: e.updatedAt
-      )    
-    ).toList();
+    try {
+      
+      return response.data.map((e) => 
+        ProductModel(
+          id: e.id, 
+          categoryId: int.parse(e.categoryId), 
+          brandId: int.parse(e.brandId), 
+          sku: e.sku,
+          name: e.name, 
+          shortDescription: e.shortDescription, 
+          longDescription: e.longDescription, 
+          thumbnail: '$_baseUrl${e.thumbnail}', 
+          images: '$_baseUrl${e.images}', 
+          isActive: int.parse(e.isActive), 
+          createdAt: e.createdAt, 
+          updatedAt: e.updatedAt
+        )    
+      ).toList();
+    } catch (e) {
+      rethrow;
+    }
   }
   
 }
