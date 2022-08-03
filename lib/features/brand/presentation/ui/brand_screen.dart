@@ -27,7 +27,7 @@ class _BrandScreenState extends ConsumerState<BrandScreen> {
 
     return BaseAsyncValueWidget(
       value: value, 
-      data: (data) {
+      data: (List<BrandModel> data) {
         return SliverList(
           delegate: SliverChildBuilderDelegate((context, index) {
             final brand = data[index];
