@@ -34,6 +34,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    listenStateChange();
     
     return Scaffold(
       appBar: AppBar(
