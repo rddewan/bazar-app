@@ -14,6 +14,7 @@ class BrandState with _$BrandState {
     AsyncValue<List<BrandModel>> brands,
     @Default([])
     List<BrandModel> brandList,
+    String? errorMsg,
 
   }) = _BrandState;
 }

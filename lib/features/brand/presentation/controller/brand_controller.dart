@@ -19,7 +19,12 @@ class BrandController extends StateNotifier<BrandState> {
   void getBrands() async {
     final result = await _brandService.getBrands();
     result.when(
-      (error) => state = state.copyWith(brands: AsyncValue.error(error)), 
+      (error) {
+        state = state.copyWith(
+          brands: AsyncValue.error(error),
+          errorMsg: error.message,
+        );
+      },        
       (success) {
         state = state.copyWith(
           brandList: success,

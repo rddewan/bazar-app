@@ -1,10 +1,13 @@
+import 'package:bazar/common/widget/http_error_screen.dart';
 import 'package:bazar/core/base/base_async_value_widget.dart';
 import 'package:bazar/features/brand/presentation/controller/brand_controller.dart';
+import 'package:bazar/features/brand/presentation/state/brand_state.dart';
 import 'package:bazar/features/brand/presentation/ui/brand_screen.dart';
 import 'package:bazar/features/category/domain/model/category_model.dart';
 import 'package:bazar/features/category/presentation/controller/category_controller.dart';
 import 'package:bazar/features/category/presentation/ui/category_screen.dart';
 import 'package:bazar/features/home/presentation/controller/home_controller.dart';
+import 'package:bazar/features/home/presentation/state/home_state.dart';
 import 'package:bazar/features/home/presentation/ui/widget/product_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -99,7 +102,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     return Card(
                       child: Column(
                         children: [
-                          Image.network(category.thumbnail),
+                          Flexible(
+                            child: Image.network(
+                              category.thumbnail,                            
+                                                      
+                            ),
+                          ),
+                          const SizedBox(height: 4,),
                           Text(category.name)
                         ],
                       ),
@@ -108,7 +117,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   childCount: data.length,),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
-                    mainAxisSpacing: 16,
+                    mainAxisSpacing: 8,
                     crossAxisSpacing: 8
                   ),
                 );
@@ -121,4 +130,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       ),
     );
   }
+
+  void listenStateChange(){
+    ref.listen<BrandState>(brandControllerProvider, (previous, next) { 
+      if (next.brands.hasError){
+        Navigator.push(context, MaterialPageRoute(builder: (_) => HttpErrorScreen(data: next.errorMsg ?? 'Something went wrong',)));
+      }
+    });
+  }
 }
+

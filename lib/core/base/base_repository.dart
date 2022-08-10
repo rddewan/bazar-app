@@ -32,6 +32,13 @@ class BaseRepository {
           code: e.response?.statusCode,
         );
       }
+
+      if (e.response?.statusCode == kHttpNotFound) {
+        throw Failure(
+          message: 'Ouch! page not found',
+          code: e.response?.statusCode,
+        );
+      }
       
       throw Failure(
           message: e.response?.statusMessage ?? 'Something went wrong',

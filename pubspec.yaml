@@ -55,9 +55,7 @@ dev_dependencies:
   flutter_lints: ^2.0.1
   retrofit_generator: '>=4.0.1'
   json_serializable:
-  # https://pub.dev/packages/flutter_flavorizr
-  flutter_flavorizr: ^2.1.3
-
+  
 
 
 # The following section is specific to Flutter packages.
@@ -98,70 +96,3 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
-
-flavorizr:
-  app:
-    android:
-      flavorDimensions: "flavors"
-    ios:
-
-  
-  flavors:
-    dev:
-      app:
-        name: "Bazar"        
-
-      android:
-        applicationId: "dev.rdewan.bazar"  
-        generateDummyAssets: true      
-        customConfig:
-          versionNameSuffix: "\".development\""
-          versionNamePrefix: "Dev "
-          signingConfig: signingConfigs.development
-          
-
-      ios:
-        bundleId: "dev.rdewan.bazar.development"
-        generateDummyAssets: true
-        buildSettings:         
-          DEVELOPMENT_TEAM: FCUZNYGQMQ 
-          PROVISIONING_PROFILE_SPECIFIER: "Bazar Development Profile"
-        
-
-    uat:
-      app:
-        name: "Bazar"
-
-      android:
-        applicationId: "dev.rdewan.bazar"
-        generateDummyAssets: true     
-        customConfig:
-          versionNameSuffix: "\".uat\""
-          versionNamePrefix: "UAT "
-          signingConfig: signingConfigs.uat
-      ios:
-        bundleId: "dev.rdewan.bazar.uat"  
-        generateDummyAssets: true    
-        buildSettings:         
-          DEVELOPMENT_TEAM: FCUZNYGQMQ 
-          PROVISIONING_PROFILE_SPECIFIER: "Bazar UAT Profile"         
-
-    prod:
-      app:
-        name: "Bazar"
-
-      android:
-        applicationId: "dev.rdewan.bazar"
-        generateDummyAssets: true  
-        customConfig:
-          signingConfig: signingConfigs.release   
-        
-      ios:
-        bundleId: "dev.rdewan.bazar"
-        generateDummyAssets: true   
-        buildSettings:         
-          DEVELOPMENT_TEAM: FCUZNYGQMQ 
-          PROVISIONING_PROFILE_SPECIFIER: "Bazar Profile" 
-          CODE_SIGN_IDENTITY: "Phone Distribution: Richard Dewan (FCUZNYGQMQ)"
- 
-          

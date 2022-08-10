@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$BrandState {
   AsyncValue<List<BrandModel>> get brands => throw _privateConstructorUsedError;
   List<BrandModel> get brandList => throw _privateConstructorUsedError;
+  String? get errorMsg => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $BrandStateCopyWith<BrandState> get copyWith =>
@@ -29,7 +30,10 @@ abstract class $BrandStateCopyWith<$Res> {
   factory $BrandStateCopyWith(
           BrandState value, $Res Function(BrandState) then) =
       _$BrandStateCopyWithImpl<$Res>;
-  $Res call({AsyncValue<List<BrandModel>> brands, List<BrandModel> brandList});
+  $Res call(
+      {AsyncValue<List<BrandModel>> brands,
+      List<BrandModel> brandList,
+      String? errorMsg});
 }
 
 /// @nodoc
@@ -44,6 +48,7 @@ class _$BrandStateCopyWithImpl<$Res> implements $BrandStateCopyWith<$Res> {
   $Res call({
     Object? brands = freezed,
     Object? brandList = freezed,
+    Object? errorMsg = freezed,
   }) {
     return _then(_value.copyWith(
       brands: brands == freezed
@@ -54,6 +59,10 @@ class _$BrandStateCopyWithImpl<$Res> implements $BrandStateCopyWith<$Res> {
           ? _value.brandList
           : brandList // ignore: cast_nullable_to_non_nullable
               as List<BrandModel>,
+      errorMsg: errorMsg == freezed
+          ? _value.errorMsg
+          : errorMsg // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -65,7 +74,10 @@ abstract class _$$_BrandStateCopyWith<$Res>
           _$_BrandState value, $Res Function(_$_BrandState) then) =
       __$$_BrandStateCopyWithImpl<$Res>;
   @override
-  $Res call({AsyncValue<List<BrandModel>> brands, List<BrandModel> brandList});
+  $Res call(
+      {AsyncValue<List<BrandModel>> brands,
+      List<BrandModel> brandList,
+      String? errorMsg});
 }
 
 /// @nodoc
@@ -82,6 +94,7 @@ class __$$_BrandStateCopyWithImpl<$Res> extends _$BrandStateCopyWithImpl<$Res>
   $Res call({
     Object? brands = freezed,
     Object? brandList = freezed,
+    Object? errorMsg = freezed,
   }) {
     return _then(_$_BrandState(
       brands: brands == freezed
@@ -92,6 +105,10 @@ class __$$_BrandStateCopyWithImpl<$Res> extends _$BrandStateCopyWithImpl<$Res>
           ? _value._brandList
           : brandList // ignore: cast_nullable_to_non_nullable
               as List<BrandModel>,
+      errorMsg: errorMsg == freezed
+          ? _value.errorMsg
+          : errorMsg // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -101,7 +118,8 @@ class __$$_BrandStateCopyWithImpl<$Res> extends _$BrandStateCopyWithImpl<$Res>
 class _$_BrandState implements _BrandState {
   const _$_BrandState(
       {this.brands = const AsyncValue.loading(),
-      final List<BrandModel> brandList = const []})
+      final List<BrandModel> brandList = const [],
+      this.errorMsg})
       : _brandList = brandList;
 
   @override
@@ -116,8 +134,11 @@ class _$_BrandState implements _BrandState {
   }
 
   @override
+  final String? errorMsg;
+
+  @override
   String toString() {
-    return 'BrandState(brands: $brands, brandList: $brandList)';
+    return 'BrandState(brands: $brands, brandList: $brandList, errorMsg: $errorMsg)';
   }
 
   @override
@@ -127,14 +148,16 @@ class _$_BrandState implements _BrandState {
             other is _$_BrandState &&
             const DeepCollectionEquality().equals(other.brands, brands) &&
             const DeepCollectionEquality()
-                .equals(other._brandList, _brandList));
+                .equals(other._brandList, _brandList) &&
+            const DeepCollectionEquality().equals(other.errorMsg, errorMsg));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(brands),
-      const DeepCollectionEquality().hash(_brandList));
+      const DeepCollectionEquality().hash(_brandList),
+      const DeepCollectionEquality().hash(errorMsg));
 
   @JsonKey(ignore: true)
   @override
@@ -145,12 +168,15 @@ class _$_BrandState implements _BrandState {
 abstract class _BrandState implements BrandState {
   const factory _BrandState(
       {final AsyncValue<List<BrandModel>> brands,
-      final List<BrandModel> brandList}) = _$_BrandState;
+      final List<BrandModel> brandList,
+      final String? errorMsg}) = _$_BrandState;
 
   @override
   AsyncValue<List<BrandModel>> get brands;
   @override
   List<BrandModel> get brandList;
+  @override
+  String? get errorMsg;
   @override
   @JsonKey(ignore: true)
   _$$_BrandStateCopyWith<_$_BrandState> get copyWith =>
